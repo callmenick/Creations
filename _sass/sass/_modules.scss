@@ -1,0 +1,301 @@
+/* =============================================================================
+  FRAMES
+============================================================================= */
+
+/**
+ * The frames
+ *
+ * These make up the majority of the single page demo. Each frame carries a 
+ * piece of information, and each plays its part by coming into view at a 
+ * certain time.
+ */
+
+.frame {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  transition: top $transition-time, bottom $transition-time, left $transition-time, width $transition-time, height $transition-time;
+}
+
+.frame1 {
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color--black;
+}
+
+.frame2 {
+  top: 100%; left: 0; bottom: 0;
+  width: 100%;
+  height: 50%;
+  background-color: $color--xdkgrey;
+}
+
+.frame3 {
+  top: 100%; left: 0; bottom: 0;
+  width: 100%;
+  height: 33.3333%;
+  background-color: #fff;
+}
+
+/* frame 1 transitions */
+
+.frame1__pos1 {
+  top: 0;
+}
+
+.frame1__pos2 {
+  height: 50%;
+}
+
+.frame1__pos3 {
+  height: 33.3333%;
+}
+
+/* frame 2 transitions */
+
+.frame2__pos1 {
+  top: 50%;
+}
+
+.frame2__pos2 {
+  top: 33.3333%;
+  height: 33.3333%;
+}
+
+/* frame 3 transitions */
+
+.frame3__pos1 {
+  top: 66.6666%;
+}
+
+/* frame content */
+
+.frame__content {
+  position: absolute;
+  top: 50%; right: 0; left: 0;
+  padding: 0 20px;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+/* frame heading */
+
+.frame__content--heading {
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  font-size: 18px;
+}
+
+/* frame alternate content */
+
+.frame__content--alt-heading {
+  position: relative;
+  margin-bottom: 13px;
+  color: $color--ltgrey;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.frame__content--alt-heading::after {
+  display: block;
+  position: absolute;
+  right: 0; bottom: -3px; left: 0;
+  margin: 0 auto;
+  width: 60px;
+  height: 3px;
+  background: $color--red;
+  content: "";
+}
+
+.frame__content--alt-subheading {
+  display: inline-block;
+  color: $color--dkgrey;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.frame__content--alt-subheading::after {
+  margin: 0 5px 0 9px;
+  color: $color--red;
+  content: "\2022";
+}
+
+.frame__content--alt-subheading:last-child::after {
+  display: none;
+}
+
+.frame__content--alt-subheading.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* frame content background */
+
+.frame__content--background {
+  position: absolute;
+  z-index: 5;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+/* frame fancy buttons */
+
+.frame__highlight--container {
+  display: block;
+  position: absolute;
+  right: 0; bottom: 0; left: 0;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.frame__highlight--container.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.frame__highlight--content {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: $color--red;
+  border-radius: 5px 5px 0 0;
+}
+
+/* media queries! */
+
+@media all and ( min-width: 720px ) {
+
+  /* frames */
+
+  .frame3 {
+    top: 0; left: 100%; bottom: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  /* frame 1 transitions */
+
+  .frame1__pos1 {
+    top: 0;
+  }
+
+  .frame1__pos2 {
+    height: 50%;
+  }
+
+  .frame1__pos3 {
+    width: 50%;
+    height: 50%;
+  }
+
+  /* frame 2 transitions */
+
+  .frame2__pos1 {
+    top: 50%;
+  }
+
+  .frame2__pos2 {
+    top: 50%;
+    height: 50%;
+    width: 50%;
+  }
+
+  /* frame 3 transitions */
+
+  .frame3__pos1 {
+    top: 0;
+    left: 50%;
+  }
+
+}
+
+@media all and ( min-width: 960px ) {
+  
+  .frame__content--heading {
+    font-size: 24px;
+  }
+
+  /* frame alternate content */
+
+  .frame__content--alt-heading {
+    font-size: 42px;
+  }
+
+  .frame__content--alt-subheading {
+    font-size: 18px;
+  }
+}
+
+/* =============================================================================
+  SPINNER
+============================================================================= */
+
+/**
+ * CSS Spinner
+ *
+ * Here's a CSS spinner I created. It matches the aesthetic of the idea I put
+ * forward, and show the possibilities of CSS well.
+ */
+
+[class*="spinner"] {
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 5;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  color: rgba(0,0,0,0);
+  font-size: 0;
+  text-indent: -99999px;
+}
+
+.spinner__multisquare {
+  
+}
+
+.spinner__multisquare::before,
+.spinner__multisquare::after {
+  display: block;
+  position: absolute;
+  width: 48%;
+  height: 48%;
+  content: "";
+}
+
+.spinner__multisquare::before {
+  top: 0; left: 0;
+  border: solid 2px $color--ltgrey;
+  animation: spinner--animation__multisquare1 1.5s infinite;
+}
+
+.spinner__multisquare::after {
+  bottom: 0; right: 0;
+  border: solid 2px $color--grey;
+  animation: spinner--animation__multisquare2 1.5s infinite;
+}
+
+@keyframes spinner--animation__multisquare1 {
+  0% { top: 0; left: 0; }
+  25% { top: 0; left: 52%; }
+  50% { top: 52%; left: 52%; }
+  75% { top: 52%; left: 0; }
+  100% { top: 0; left: 0; }
+}
+
+@keyframes spinner--animation__multisquare2 {
+  0% { bottom: 0; right: 0; }
+  25% { bottom: 0; right: 52%; }
+  50% { bottom: 52%; right: 52%; }
+  75% { bottom: 52%; right: 0; }
+  100% { bottom: 0; right: 0; }
+}

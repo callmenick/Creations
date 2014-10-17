@@ -1,0 +1,22 @@
+/* =============================================================================
+  BASE
+============================================================================= */
+
+/* body and html */
+body,
+html {
+  height: 100%;
+}
+
+body {
+  color: $color--dkgrey;
+  background-color: #fff;
+  font-family: $font-family--primary;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
